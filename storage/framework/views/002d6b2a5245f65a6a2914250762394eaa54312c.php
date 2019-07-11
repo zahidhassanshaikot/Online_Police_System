@@ -1,28 +1,27 @@
-@extends('back-end.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section id="clearance-page">
   <div class= "container">
    <div class="alert alert-secondary" role="alert">
         <h3 class= "text-center"> Add News</h3>
-        @if(Session::get('message'))
+        <?php if(Session::get('message')): ?>
                 <div class="alert alert-success" id="message">
-                    <h4 class=" text-center text-success"> {{ Session::get('message') }}</h4>
+                    <h3 class=" text-center text-success"> <?php echo e(Session::get('message')); ?></h3>
                 </div>
-            @endif
+            <?php endif; ?>
             <div class=" card card-default">
-                @if ($errors->any())
+                <?php if($errors->any()): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
-                @endif
+                <?php endif; ?>
         <div class= "row">
           <div class= "col">
-            <form method="POST" action="{{ route('save-news-info') }}" class="gd-form" enctype="multipart/form-data">
-                @csrf
+            <form method="POST" action="<?php echo e(route('save-news-info')); ?>" class="gd-form" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>
     
                <label> News Title: </label>
                <input style= "margin-bottom:5px" class="form-control" type="text" name = "news_title" >
@@ -48,4 +47,5 @@
   </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('back-end.master', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

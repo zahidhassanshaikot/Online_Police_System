@@ -52,6 +52,11 @@
               <a class="dropdown-item" href="<?php echo e(route('clearance_list')); ?>">Clearance Application List</a>
             </div>
           </li>
+                 <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('add-news')); ?>">
+              Add News
+            </a>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('news')); ?>">

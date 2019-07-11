@@ -33,9 +33,9 @@ Route::get('add/vehicle', 'VehicleController@addVehicle')->name('add-vehicle');
 Route::get('search/vehicle', 'VehicleController@searchVehicle')->name('search-vehicle');
 
 Route::get('news', 'NewsController@news')->name('news');
-Route::get('news/details', 'NewsController@newsDetails')->name('news-details');
+Route::get('news/details/{id}', 'NewsController@newsDetails')->name('news-details');
 Route::get('news/add', 'NewsController@addNews')->name('add-news');
-
+Route::post('news/save', 'NewsController@saveNews')->name('save-news-info');
 
 
 
