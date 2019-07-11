@@ -6,12 +6,23 @@
   <div class= "container">
    <div class="alert alert-secondary" role="alert">
         <h3 class= "text-center"> Registration </h3>
+                  
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
 
         <div class= "row">
 
           <div class= "col">
-            <form class="Registration-form">
-               
+            <form class="Registration-form" action="{{ route('save-user-info') }}" method="POST">
+               @csrf
                
                <label> Gender </label>
                <input style= "margin-bottom:5px" class="form-control" type="text" name = "designation" placeholder="Mr./Mrs./Ms./MD.">
@@ -36,6 +47,14 @@
 
                <label> Enter cell number: </label>
                <input style= "margin-bottom:8px" class="form-control" type="text" name = "phone_no" >
+           
+
+               <label> Password: </label>
+               <input style= "margin-bottom:8px" class="form-control" type="password" name = "password" >
+           
+
+               <label> Confirm Password: </label>
+               <input style= "margin-bottom:8px" class="form-control" type="password" name = "password_confirmation" >
            
                <input type="submit" name="btn" class="btn btn-info btn-inline" value="Sign In">
                {{--  <button class="btn btn-info btn-inline">Sign In</button>  --}}

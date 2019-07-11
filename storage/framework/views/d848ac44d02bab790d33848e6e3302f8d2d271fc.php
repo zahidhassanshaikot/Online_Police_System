@@ -33,6 +33,7 @@
               <a class="dropdown-item" href="<?php echo e(route('Clearance_page')); ?>">Apply for Clearance</a>
             </div>
           </li>
+            
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Vehicle
@@ -51,16 +52,33 @@
               <a class="dropdown-item" href="<?php echo e(route('clearance_list')); ?>">Clearance Application List</a>
             </div>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('news')); ?>">
               News
             </a>
           </li>
+
+        <?php if(auth()->guard()->guest()): ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('user-login')); ?>">
               Login
             </a>
           </li>
+          <?php endif; ?>
+            
+          <?php if(auth()->guard()->check()): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              Logout
+            </a>
+            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+         <?php echo csrf_field(); ?>
+         </form>
+          </li>
+        <?php endif; ?>
+
         </ul>
       </div>
     </nav>

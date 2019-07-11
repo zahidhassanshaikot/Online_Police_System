@@ -11,13 +11,14 @@
 |
 */
       
-     Route::post('/password-request', 'UserController@resetPassword')->name('password-request');
-
+Route::post('/password-request', 'UserController@resetPassword')->name('password-request');
+Route::post('save-user-info', 'DeshboardController@saveUserInfo')->name('save-user-info');
 
 Route::get('/', 'DeshboardController@index')->name('/');
 
 Route::get('user-login', 'DeshboardController@userLogin')->name('user-login');
 Route::get('user-registration', 'DeshboardController@userReg')->name('user-ragistration');
+Route::post('save-user-info', 'DeshboardController@saveUserInfo')->name('save-user-info');
 
 Route::get('GD/application', 'GDApplicatioController@GD_application_page')->name('GD_application_page');
 Route::get('GD/application/list', 'GDApplicatioController@GD_application_list')->name('GD_application_list');
@@ -33,11 +34,28 @@ Route::get('search/vehicle', 'VehicleController@searchVehicle')->name('search-ve
 
 Route::get('news', 'NewsController@news')->name('news');
 Route::get('news/details', 'NewsController@newsDetails')->name('news-details');
+Route::get('news/add', 'NewsController@addNews')->name('add-news');
+
+
+
+
+
 
 Route::group(['middleware' => ['auth', 'verified:ture']], function () {
-    Route::group(['middleware' => 'role:Super Admin|Admin|user'], function () {
+    
+    Route::group(['middleware' => 'role:Admin'], function () {
 
-  
+ 
+        
+    });
+    Route::group(['middleware' => 'role:User'], function () {
+
+ 
+        
+    });
+    Route::group(['middleware' => 'role:Admin|User'], function () {
+
+ 
         
     });
 

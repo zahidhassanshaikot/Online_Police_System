@@ -22,11 +22,11 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->hasRole('Admin')) {
+          
+          
           return redirect('/');
             // return redirect('emp.dashboard');
-        } else if ($user->hasRole('Super Admin')){
-
-            return redirect('/');
+        
         } else if ($user->hasRole('User')){
 
             return redirect('/');
@@ -45,7 +45,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -55,5 +55,6 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
     }
 }

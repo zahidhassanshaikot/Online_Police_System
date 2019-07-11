@@ -33,6 +33,8 @@
               <a class="dropdown-item" href="{{ route('Clearance_page') }}">Apply for Clearance</a>
             </div>
           </li>
+            {{--  @auth
+           @if(Auth::user()->hasRole('Admin'))  --}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Vehicle
@@ -51,16 +53,40 @@
               <a class="dropdown-item" href="{{ route('clearance_list') }}">Clearance Application List</a>
             </div>
           </li>
+                 <li class="nav-item">
+            <a class="nav-link" href="{{ route('add-news') }}">
+              Add News
+            </a>
+          </li>
+{{--  
+        @endif
+            @endauth  --}}
           <li class="nav-item">
             <a class="nav-link" href="{{ route('news') }}">
               News
             </a>
           </li>
+
+        @guest
           <li class="nav-item">
             <a class="nav-link" href="{{ route('user-login') }}">
               Login
             </a>
           </li>
+          @endguest
+            {{--  @if(Session::get('UserId'))  --}}
+          @auth
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+         @csrf
+         </form>
+          </li>
+        @endauth
+
         </ul>
       </div>
     </nav>
