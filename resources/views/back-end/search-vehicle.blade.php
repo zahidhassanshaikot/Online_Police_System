@@ -13,22 +13,23 @@
 
               <div class= "col-8 offset-2">
 
-                <form>
+                <form method="POST" action="{{ route('search-vehicle-info') }}">
+                  @csrf
                     <div class = "form-group">
-                        <label  class= "font-weight-bold" for="name">Enter vehicle number </label>
-                        <input class = "form-control"type="text" id="name" required>
+                        <label  class= "font-weight-bold" for="vehicle_no">Enter vehicle number </label>
+                        <input class = "form-control"type="text" name="vehicle_no" id="vehicle_no" >
                     </div>
                     <div class = "form-group">
-                        <label  class= "font-weight-bold" for="email">Enter driving licence number</label>
-                        <input class = "form-control" type="text" id="email" >
+                        <label  class= "font-weight-bold" for="driving_licence">Enter driving licence number</label>
+                        <input class = "form-control" type="text" name="driving_licence" id="driving_licence" >
 
                     </div>
                     <div class = "form-group">
                         <label  class= "font-weight-bold" for="name">Enter NID</label>
-                        <input class = "form-control"type="text" id="name" required>
+                        <input class = "form-control"type="text" name="nid" id="name" >
                     </div>
 
-                    <button class= "btn btn-success btn-block"> Search</button>
+                    <input class= "btn btn-success btn-block" type="submit" name="btn" value="Search" >
                 </form>
                 <br>
 

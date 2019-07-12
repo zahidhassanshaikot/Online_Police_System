@@ -33,8 +33,8 @@
               <a class="dropdown-item" href="{{ route('Clearance_page') }}">Apply for Clearance</a>
             </div>
           </li>
-            {{--  @auth
-           @if(Auth::user()->hasRole('Admin'))  --}}
+             @auth
+           @if(Auth::user()->hasRole('Admin')) 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Vehicle
@@ -51,6 +51,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('GD_application_list') }}">GD Application List</a>
               <a class="dropdown-item" href="{{ route('clearance_list') }}">Clearance Application List</a>
+              <a class="dropdown-item" href="{{ route('vehicle_list') }}">Vehicle List</a>
             </div>
           </li>
                  <li class="nav-item">
@@ -58,9 +59,9 @@
               Add News
             </a>
           </li>
-{{--  
+ 
         @endif
-            @endauth  --}}
+            @endauth 
           <li class="nav-item">
             <a class="nav-link" href="{{ route('news') }}">
               News

@@ -33,7 +33,8 @@
               <a class="dropdown-item" href="<?php echo e(route('Clearance_page')); ?>">Apply for Clearance</a>
             </div>
           </li>
-            
+             <?php if(auth()->guard()->check()): ?>
+           <?php if(Auth::user()->hasRole('Admin')): ?> 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Vehicle
@@ -50,6 +51,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?php echo e(route('GD_application_list')); ?>">GD Application List</a>
               <a class="dropdown-item" href="<?php echo e(route('clearance_list')); ?>">Clearance Application List</a>
+              <a class="dropdown-item" href="<?php echo e(route('vehicle_list')); ?>">Vehicle List</a>
             </div>
           </li>
                  <li class="nav-item">
@@ -57,7 +59,9 @@
               Add News
             </a>
           </li>
-
+ 
+        <?php endif; ?>
+            <?php endif; ?> 
           <li class="nav-item">
             <a class="nav-link" href="<?php echo e(route('news')); ?>">
               News
