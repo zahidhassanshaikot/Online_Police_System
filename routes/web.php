@@ -22,12 +22,13 @@ Route::post('save-user-info', 'DeshboardController@saveUserInfo')->name('save-us
 
 Route::get('GD/application', 'GDApplicatioController@GD_application_page')->name('GD_application_page');
 Route::post('save/GD/application', 'GDApplicatioController@save_GD_application_page')->name('save-gd-application-info');
+Route::post('save/clearance/application', 'GDApplicatioController@save_clearance_application_page')->name('save-clearance-application-info');
 Route::get('GD/application/list', 'GDApplicatioController@GD_application_list')->name('GD_application_list');
-Route::get('GD/application/preview', 'GDApplicatioController@GD_application_preview')->name('GD_application_preview');
+Route::get('GD/application/preview/{id}', 'GDApplicatioController@GD_application_preview')->name('GD_application_preview');
 
 Route::get('GD/Clearance_page', 'GDApplicatioController@Clearance_page')->name('Clearance_page');
 Route::get('GD/Clearance/list', 'GDApplicatioController@Clearance_list')->name('clearance_list');
-Route::get('GD/Clearance/preview', 'GDApplicatioController@Clearance_preview')->name('clearance_preview');
+Route::get('GD/Clearance/preview/{id}', 'GDApplicatioController@Clearance_preview')->name('clearance_preview');
 
 
 Route::get('add/vehicle', 'VehicleController@addVehicle')->name('add-vehicle');

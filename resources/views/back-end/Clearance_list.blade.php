@@ -19,65 +19,29 @@
               </tr>
             </thead>
             <tbody>
+            
+              @foreach($obj_applications as $application)
               <tr>
-                <th scope="row">17345</th>
-                <td>Lost Bike</td>
-                <td>Nahid Hasan</td>
-                <td>0123445</td>
-                <td>Kolabagan Thana</td>
-                <td><a href="{{ route('clearance_preview') }}">View Details</a></td>
+                <th scope="row">{{ $application->id }}</th>
+                <td>{{ $application->subject }}</td>
+                <td>{{ $application->name_of_applicant }}</td>
+                <td>{{ $application->phone_no }}</td>
+                <td>{{ $application->name_of_police_station }}</td>
+                <td><a href="{{ route('clearance_preview',['id'=>$application->id]) }}">View Details</a></td>
               </tr>
-              <tr>
-                <th scope="row">14235</th>
-                <td>Lost Car</td>
-                <td>Murad Ahmed</td>
-                <td>0123445</td>
-                <td>Sher E Bangla Thana</td>
-                <td><a href="GD_application_preview.html">View Details</a></td>
-              </tr>
-              <tr>
-                <th scope="row">15346</th>
-                <td>Lost Car</td>
-                <td>Sajib Ahmed</td>
-                <td>0123445</td>
-                <td>Sher E Bangla Thana</td>
-                <td><a href="GD_application_preview.html">View Details</a></td>
-              </tr>
-              <tr>
-                <th scope="row">17345</th>
-                <td>Lost Bike</td>
-                <td>Nahid Hasan</td>
-                <td>0123445</td>
-                <td>Kolabagan Thana</td>
-                <td><a href="GD_application_preview.html">View Details</a></td>
-              </tr>
-              <tr>
-                <th scope="row">14235</th>
-                <td>Lost Car</td>
-                <td>Murad Ahmed</td>
-                <td>0123445</td>
-                <td>Sher E Bangla Thana</td>
-                <td><a href="GD_application_preview.html">View Details</a></td>
-              </tr>
-              <tr>
-                <th scope="row">15346</th>
-                <td>Lost Car</td>
-                <td>Sajib Ahmed</td>
-                <td>0123445</td>
-                <td>Sher E Bangla Thana</td>
-                <td><a href="GD_application_preview.html">View Details</a></td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
           <div class="pagination-pt">
-            <ul>
+            {{ $obj_applications->links() }}
+            {{-- <ul>
               <li><a href="#">prev</a></li>
               <li><a href="#">01</a></li>
               <li><a href="#">02</a></li>
               <li><a href="#">03</a></li>
               <li><a href="#">04</a></li>
               <li><a href="#">next</a></li>
-            </ul>
+            </ul> --}}
           </div>
         </div> 
       </div>
