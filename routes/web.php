@@ -21,6 +21,7 @@ Route::get('user-registration', 'DeshboardController@userReg')->name('user-ragis
 Route::post('save-user-info', 'DeshboardController@saveUserInfo')->name('save-user-info');
 
 Route::get('GD/application', 'GDApplicatioController@GD_application_page')->name('GD_application_page');
+Route::post('save/GD/application', 'GDApplicatioController@save_GD_application_page')->name('save-gd-application-info');
 Route::get('GD/application/list', 'GDApplicatioController@GD_application_list')->name('GD_application_list');
 Route::get('GD/application/preview', 'GDApplicatioController@GD_application_preview')->name('GD_application_preview');
 

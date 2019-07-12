@@ -7,7 +7,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
           <article class="news">
             <div class="feature-image">
-              <img src="{{ asset($obj_news->image) }}" alt="">
+              <img src="{{ asset($obj_news->image) }}" alt="image">
             </div>
             <div class="news-details">
               <h4 class="news-title">{{ $obj_news->news_title }}</h4>

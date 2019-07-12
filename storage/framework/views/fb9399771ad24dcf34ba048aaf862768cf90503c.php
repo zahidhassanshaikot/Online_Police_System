@@ -8,22 +8,22 @@
     <div class="alert alert-secondary" role="alert">
         <h3 class= "text-center"> Preview Your GD application</h3>
 
-        <p > <span class="font-weight-bold"> Date: </span> 7th Dec, 2109 </p>
+        <p > <span class="font-weight-bold"> Date: </span><?php echo e(Carbon\Carbon::parse($data->created_at)->toFormattedDateString()); ?> </p>
         <p> <span > To, </span> <br>
          <span style="margin-top:10px"> Officer in Charge </span> <br>
-         <span style="margin-top:10px"> <span > Mohammodpur  </span> Police Station </span> <br>
-         <span > Mohammodpur - 1212, Dhaka  </span> </p>
-        <p> <span class="font-weight-bold"> Subject:  </span> Application for entry of a General Diary </p>
+         <span style="margin-top:10px"> <span > <?php echo e($data->name_of_police_station); ?> </span> <br>
+         <span > <?php echo e($data->address_of_police_station); ?>  </span> </p>
+        <p> <span class="font-weight-bold"> Subject:  </span> <?php echo e($data->subject); ?> </p>
         <p> Dear Sir, </p>
-        I, Mr Shimul son of Md. Ashraf Ali Village: Bhatai, P.O: Bhatai Bazar, Thana: Shailkupa, District: Jhenidah, is a Software Engineer by profession. That today, on Mohakhali, at around 5pm. <br><br>
+        I, <?php echo e($data->designation); ?> <?php echo e($data->name_of_applicant); ?> son of <?php echo e($data->father_name); ?>Village: <?php echo e($data->village); ?>, P.O: <?php echo e($data->post_office); ?>, Thana: <?php echo e($data->thana); ?>, District: <?php echo e($data->district); ?>, is a <?php echo e($data->profession); ?> by profession. That today, on Mohakhali, at around <?php echo e($data->incident_time); ?>. <br><br>
 
-        In the circumstances, I hereby that all the above information is true and kindly requesting you to take necessary steps regarding the said matter and entry the said matter as a General Diary in your police Station and oblige me thereby. <br> <br>
+        In the circumstances, <?php echo e($data->description); ?>. <br> <br>
 
         <p> Yours truly,
-        Mr. Shimul Mahmud<br>
-        <span class="font-weight-bold"> Corresponding Address:</span> Shamoli, Adabor, Dhaka.<br>
-        <span class="font-weight-bold"> Email: </span>  nahid@gmail.com<br>
-        <span class="font-weight-bold"> Cell No. </span> 0197565645 </p>
+        <?php echo e($data->designation); ?> <?php echo e($data->name_of_applicant); ?><br>
+        <span class="font-weight-bold"> Corresponding Address:</span> <?php echo e($data->address); ?>.<br>
+        <span class="font-weight-bold"> Email: </span>  <?php echo e($data->email_address); ?><br>
+        <span class="font-weight-bold"> Cell No. </span> <?php echo e($data->phone_no); ?> </p>
 
 
 
