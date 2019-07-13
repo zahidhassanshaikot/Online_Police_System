@@ -52,6 +52,7 @@
               <a class="dropdown-item" href="{{ route('GD_application_list') }}">GD Application List</a>
               <a class="dropdown-item" href="{{ route('clearance_list') }}">Clearance Application List</a>
               <a class="dropdown-item" href="{{ route('vehicle_list') }}">Vehicle List</a>
+              <a class="dropdown-item" href="{{ route('news_list') }}">News List</a>
             </div>
           </li>
                  <li class="nav-item">

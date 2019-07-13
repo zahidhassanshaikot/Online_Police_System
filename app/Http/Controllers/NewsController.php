@@ -56,4 +56,61 @@ class NewsController extends Controller
         // return $obj_news;
         return view('back-end.newsDetails',['obj_news'=>$obj_news]);
     }
+    public function listOfNews(){
+        $obj_news=News::orderby('created_at','DESC')->paginate(10);;
+        // return $obj_news;
+        return view('back-end.news-list',['obj_news'=>$obj_news]);
+    }
+    public function deleteNews($id){
+            $obj_news=News::find($id);
+             if (File::exists($obj_news->image)) {
+                unlink($obj_news->image);
+            }
+         $obj_news->delete();
+        // return $obj_news;
+        return redirect()->back()->with('message','News Swccessfully Deleted');
+        ;
+    }
+    public function editNews($id){
+            $obj_news=News::find($id);
+
+        // return $obj_news;
+        return view('back-end.edit-news',['obj_news'=>$obj_news]);
+        ;
+    }
+    public function updateNews(Request $request){
+            
+
+            $this->validate($request, [
+            'news_title' => 'required|max:30|min:2',
+            'short_description' => 'required|max:80|min:5'
+        
+        ]);
+        $obj_news=News::find($request->news_id);
+       
+        $obj_news->news_title=$request->news_title;
+        $obj_news->short_description=$request->short_description;
+        $obj_news->long_description=$request->long_description;
+        
+
+        if ($request->file('image')) {
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,JPG,JPEG,jpeg,png|max:2048',
+            ]);
+            if (File::exists($obj_news->image)) {
+                unlink($obj_news->image);
+            }
+            $newsImage = $request->file('image');
+            $fileType = $newsImage->getClientOriginalExtension();
+            $imageName = date('YmdHis') . "news" . rand(5, 10) . '.' . $fileType;
+            $directory = 'images/';
+            $imageUrl = $directory . $imageName;
+            Image::make($newsImage)->save($imageUrl);
+            $obj_news->image = $imageUrl;
+        }
+        $obj_news->save();
+
+        return redirect('news/list')->with('message','News Swccessfully Updated');
+        ;
+    }
 }

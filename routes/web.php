@@ -38,6 +38,10 @@ Route::group(['middleware' => ['auth', 'verified:ture']], function () {
 
     Route::get('news/add', 'NewsController@addNews')->name('add-news');
     Route::post('news/save', 'NewsController@saveNews')->name('save-news-info');
+    Route::get('news/list', 'NewsController@listOfNews')->name('news_list');
+    Route::get('news/delete/{id}', 'NewsController@deleteNews')->name('news-delete');
+    Route::get('news/edit/{id}', 'NewsController@editNews')->name('news-edit');
+    Route::post('news/update', 'NewsController@updateNews')->name('update-news-info');
     
     Route::get('add/vehicle', 'VehicleController@addVehicle')->name('add-vehicle');
     Route::post('save/vehicle/info', 'VehicleController@saveVehicle')->name('save-vehicle-info');
