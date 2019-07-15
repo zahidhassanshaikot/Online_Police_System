@@ -27,6 +27,7 @@ class GDApplicatioController extends Controller
             'description' => 'required|min:5'
         
         ]);
+         $user_id=Auth::user()->id;
         if(isset($request->btn_submit)){
             $obj_GDapplication=new GDApplication();
             $obj_GDapplication->subject=$request->subject;
@@ -47,6 +48,7 @@ class GDApplicatioController extends Controller
             $obj_GDapplication->email_address=$request->email_address;
             $obj_GDapplication->phone_no=$request->phone_no;
             $obj_GDapplication->application_type='gd_application';
+            $obj_GDapplication->application_submit_by=$user_id;
             $obj_GDapplication->save();
             return redirect()->back()->with('message','Application Send');
         }else {
@@ -61,6 +63,7 @@ class GDApplicatioController extends Controller
             'description' => 'required|min:5'
         
         ]);
+        $user_id=Auth::user()->id;
         if(isset($request->btn_submit)){
             $obj_GDapplication=new GDApplication();
             $obj_GDapplication->subject=$request->subject;
@@ -80,6 +83,8 @@ class GDApplicatioController extends Controller
             $obj_GDapplication->address=$request->address;
             $obj_GDapplication->email_address=$request->email_address;
             $obj_GDapplication->phone_no=$request->phone_no;
+            $obj_GDapplication->application_submit_by=$user_id;
+
             $obj_GDapplication->application_type='clearance';
             $obj_GDapplication->save();
             return redirect()->back()->with('message','Application Send');
@@ -106,5 +111,8 @@ class GDApplicatioController extends Controller
     public function Clearance_preview($id){
          $obj_applications=GDApplication::find($id);
         return view('back-end.Clearance_preview',['data'=>$obj_applications]);
+    }
+      public function useMyInfo(){
+        echo view('back-end.ajax-use-my-info');
     }
 }

@@ -107,7 +107,7 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">
       © 2019 Copyright:
-      <a href="home.html"> policebox.com</a>
+      <a href="{{ route('/') }}"> policebox.com</a>
     </div>
     <!-- Copyright -->
   </footer>

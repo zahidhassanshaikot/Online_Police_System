@@ -25,14 +25,17 @@ class NewsController extends Controller
     }
     public function saveNews(Request $request){
     $this->validate($request, [
-            'news_title' => 'required|max:30|min:2',
+            'news_title' => 'required|max:40|min:2',
             'short_description' => 'required|max:80|min:5'
         
         ]);
+        $user_id=Auth::user()->id;
+        
         $obj_news=new News();
         $obj_news->news_title=$request->news_title;
         $obj_news->short_description=$request->short_description;
         $obj_news->long_description=$request->long_description;
+        $obj_news->news_added_by=$user_id;
         
 
         if ($request->file('image')) {

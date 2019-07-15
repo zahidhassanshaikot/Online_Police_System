@@ -14,6 +14,7 @@
                 <th scope="col">GD Subject</th>
                 <th scope="col">Victims Name</th>
                 <th scope="col">Victims Phone Number</th>
+                <th scope="col">Email</th>
                 <th scope="col">Police Station Name</th>
                 <th scope="col">Action</th>
               </tr>
@@ -25,6 +26,7 @@
                 <td>{{ $application->subject }}</td>
                 <td>{{ $application->name_of_applicant }}</td>
                 <td>{{ $application->phone_no }}</td>
+                <td>{{ $application->email_address }}</td>
                 <td>{{ $application->name_of_police_station }}</td>
                 <td><a href="{{ route('GD_application_preview',['id'=>$application->id]) }}">View Details</a></td>
               </tr>

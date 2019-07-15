@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vehicle;
+use App\Role;
+use App\User;
+use DB;
+use File;
+use Image;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class VehicleController extends Controller
 {
@@ -20,6 +28,7 @@ class VehicleController extends Controller
             'owner_name' => 'required|min:5'
         
         ]);
+        $user_id=Auth::user()->id;
         // return $request;
         $obj_vehicle=new Vehicle();
         $obj_vehicle->vehicle_no=$request->vehicle_no;
@@ -33,6 +42,7 @@ class VehicleController extends Controller
         $obj_vehicle->insurance_exp_date=$request->insurance_exp_date;
         $obj_vehicle->driving_licence=$request->driving_licence;
         $obj_vehicle->nid=$request->nid;
+        $obj_vehicle->vehicles_added_by=$user_id;
         $obj_vehicle->save();
 
         return redirect()->back()->with('message','Info Save succefully');

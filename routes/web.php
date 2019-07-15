@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth', 'verified:ture']], function () {
             Route::get('GD/Clearance/list', 'GDApplicatioController@Clearance_list')->name('clearance_list');
             Route::get('GD/Clearance/preview/{id}', 'GDApplicatioController@Clearance_preview')->name('clearance_preview');
 
+            Route::get('use-my-info', 'GDApplicatioController@useMyInfo');
+
+
             Route::get('news/add', 'NewsController@addNews')->name('add-news');
             Route::post('news/save', 'NewsController@saveNews')->name('save-news-info');
             Route::get('news/list', 'NewsController@listOfNews')->name('news_list');
@@ -59,15 +62,15 @@ Route::group(['middleware' => ['auth', 'verified:ture']], function () {
         });
         Route::group(['middleware' => 'role:User'], function () {
 
+
+                
+        });
+        Route::group(['middleware' => 'role:Admin|User'], function () {
             Route::get('GD/application', 'GDApplicatioController@GD_application_page')->name('GD_application_page');
             Route::post('save/GD/application', 'GDApplicatioController@save_GD_application_page')->name('save-gd-application-info');
             Route::post('save/clearance/application', 'GDApplicatioController@save_clearance_application_page')->name('save-clearance-application-info');
 
             Route::get('GD/Clearance_page', 'GDApplicatioController@Clearance_page')->name('Clearance_page');
-
-                
-        });
-        Route::group(['middleware' => 'role:Admin|User'], function () {
 
             
         
