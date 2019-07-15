@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2019 at 04:00 PM
+-- Generation Time: Jul 15, 2019 at 08:21 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -48,6 +48,7 @@ CREATE TABLE `applications` (
   `address` varchar(100) NOT NULL,
   `email_address` varchar(100) DEFAULT NULL,
   `phone_no` varchar(100) DEFAULT NULL,
+  `application_submit_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,9 +57,12 @@ CREATE TABLE `applications` (
 -- Dumping data for table `applications`
 --
 
-INSERT INTO `applications` (`id`, `subject`, `application_type`, `gd_date`, `name_of_police_station`, `address_of_police_station`, `designation`, `profession`, `name_of_applicant`, `father_name`, `village`, `post_office`, `thana`, `district`, `description`, `incident_time`, `address`, `email_address`, `phone_no`, `created_at`, `updated_at`) VALUES
-(1, 'rdf', 'gd_application', '2019-07-10 18:00:00', 'gdfg', 'gdfg', 'Md', NULL, 'gfdg', 'gfdg', 'ff', 'ff', NULL, NULL, 'dfgfdgdfgdfgdg', NULL, 'shukrabadh, Dhaka Bangladesh', 'ex@gmail.com', '0000000000', '2019-07-11 11:25:11', '2019-07-11 11:25:11'),
-(2, 'rdf', 'clearance', '2019-07-11 18:00:00', 'mirpur', NULL, NULL, 'eng', 'mirpur', 'fa', 'vi', 'ff', NULL, NULL, 'dsfsdfdsfds', NULL, 'shukrabadh, Dhaka Bangladesh', 'ex@gmail.com', '0000000000', '2019-07-11 19:33:42', '2019-07-11 19:33:42');
+INSERT INTO `applications` (`id`, `subject`, `application_type`, `gd_date`, `name_of_police_station`, `address_of_police_station`, `designation`, `profession`, `name_of_applicant`, `father_name`, `village`, `post_office`, `thana`, `district`, `description`, `incident_time`, `address`, `email_address`, `phone_no`, `application_submit_by`, `created_at`, `updated_at`) VALUES
+(1, 'rdf', 'gd_application', '2019-07-10 18:00:00', 'gdfg', 'gdfg', 'Md', NULL, 'gfdg', 'gfdg', 'ff', 'ff', NULL, NULL, 'dfgfdgdfgdfgdg', NULL, 'shukrabadh, Dhaka Bangladesh', 'ex@gmail.com', '0000000000', NULL, '2019-07-11 11:25:11', '2019-07-11 11:25:11'),
+(2, 'rdf', 'clearance', '2019-07-11 18:00:00', 'mirpur', NULL, NULL, 'eng', 'mirpur', 'fa', 'vi', 'ff', NULL, NULL, 'dsfsdfdsfds', NULL, 'shukrabadh, Dhaka Bangladesh', 'ex@gmail.com', '0000000000', NULL, '2019-07-11 19:33:42', '2019-07-11 19:33:42'),
+(3, 'rdf', 'gd_application', '2019-07-14 18:00:00', 'mirpur', 'gdfg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'sdfdsfffsd dsf sd sdf fs', '3PM', 'shukrabadh, Dhaka Bangladesh', NULL, NULL, 3, '2019-07-15 00:02:09', '2019-07-15 00:02:09'),
+(4, 'rdf', 'gd_application', '2019-07-14 18:00:00', 'mirpur', 'gdfg', 'Md', 'eng', 'ex', 'ff', 'ff', 'ff', 'Dhanmondi', 'ff', 'fgggfdgdf', '3PM', 'shukrabadh, Dhaka Bangladesh', 'ex4useonly@gmail.com', '0000000000', 3, '2019-07-15 00:04:54', '2019-07-15 00:04:54'),
+(5, 'rdf', 'clearance', '2019-07-14 18:00:00', 'Kolabagan', 'gdfg', 'Md', 'eng', 'ex', 'ff', 'ff', 'ff', 'Dhanmondi', 'ff', 'dfgdfdsf', '3PM', 'shukrabadh, Dhaka Bangladesh', 'ex4useonly@gmail.com', '0000000000', 3, '2019-07-15 00:10:18', '2019-07-15 00:10:18');
 
 -- --------------------------------------------------------
 
@@ -95,6 +99,7 @@ CREATE TABLE `news` (
   `long_description` text,
   `publication_status` tinyint(100) DEFAULT '1',
   `image` text,
+  `news_added_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -103,9 +108,9 @@ CREATE TABLE `news` (
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id`, `news_title`, `short_description`, `long_description`, `publication_status`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'hji', 'ddddd ddddd dddddddddddddddddd ddddddddddddddddddd', 'sdasdadkj jkhjk hjk\r\n               fdg gfdgd ffg', 1, 'images/20190711115923news6.jpg', '2019-07-11 05:59:23', '2019-07-12 02:01:40'),
-(3, 'hji', 'ddddd ddddd dddddddddddddddddd ddddddddddddddddddd', 'sdasdad', 1, 'images/20190712080225news7.jpg', '2019-07-12 01:58:40', '2019-07-12 02:02:25');
+INSERT INTO `news` (`id`, `news_title`, `short_description`, `long_description`, `publication_status`, `image`, `news_added_by`, `created_at`, `updated_at`) VALUES
+(1, 'hji', 'ddddd ddddd dddddddddddddddddd ddddddddddddddddddd', 'sdasdadkj jkhjk hjk\r\n               fdg gfdgd ffg', 1, 'images/20190711115923news6.jpg', NULL, '2019-07-11 05:59:23', '2019-07-12 02:01:40'),
+(3, 'hji', 'ddddd ddddd dddddddddddddddddd ddddddddddddddddddd', 'sdasdad', 1, 'images/20190712080225news7.jpg', NULL, '2019-07-12 01:58:40', '2019-07-12 02:02:25');
 
 -- --------------------------------------------------------
 
@@ -185,7 +190,7 @@ CREATE TABLE `role_user` (
 
 INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
 (3, 1),
-(5, 2);
+(6, 2);
 
 -- --------------------------------------------------------
 
@@ -217,8 +222,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `designation`, `father_name`, `village`, `post_office`, `thana`, `district`, `phone_no`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'ex', 'ex4useonly@gmail.com', 'Md', 'ff', 'ff', 'ff', 'Dhanmondi', 'ff', '0000000000', '2019-07-11 18:00:00', '$2y$10$c/MsEwUaJiQKPtnq/QaPa.Qekde5NaBWrSjYgEdTLi2gyvwRIenJi', 'images/20190713135228profile10.jpg', 'cOCUAfuOKab0zpSNkk1TN0ASrCzB3WWgvwMTczxPBM2xXyx3TkMGbvz85Axm', '2019-07-11 04:08:09', '2019-07-13 07:54:07'),
-(5, 'ex', 'zahidhassanshaikot@gmail.com', 'Md', 'ff', 'ff', NULL, 'ff', 'ff', NULL, '2019-07-11 18:00:00', '$2y$10$X6k2azQfoMkUePY6GRuwpe9Kgxt0.3hvDdRvCvTnmppN6gfjXVE0a', NULL, 'mfWpIU6ECHFwHiAGsfOBJkPgkX56shfOrfgf19hl5LhNgFwAFKvE2ZRftq3r', '2019-07-11 04:55:08', '2019-07-11 04:55:08');
+(3, 'ex', 'ex4useonly@gmail.com', 'Md', 'ff', 'ff', 'ff', 'Dhanmondi', 'ff', '0000000000', '2019-07-11 18:00:00', '$2y$10$c/MsEwUaJiQKPtnq/QaPa.Qekde5NaBWrSjYgEdTLi2gyvwRIenJi', 'images/20190713135228profile10.jpg', 'j3y3Oya0ycMwaXX6eIDSuJIVY4Fw6Wr3kE4S0mIw2ccN4fTHIC6RsJAnm8Xy', '2019-07-11 04:08:09', '2019-07-13 07:54:07'),
+(6, 'nahid', 'zahidhassanshaikot@gmail.com', 'Md', 'gfdg', 'ff', 'ff', 'ff', 'ff', '01985986986', '2019-07-13 18:00:00', '$2y$10$deTRWc2HAv9Kig6Fm/rNR.J6iAE41YVBg24Bg9YRb.0OIZrZbKwae', NULL, 'njUJNncy9bS4slQJqpjbw99QJjoXq8NH5RdmG2wx7oAvwgwST0mSn1qdwAsf', '2019-07-13 23:57:28', '2019-07-13 23:58:37');
 
 -- --------------------------------------------------------
 
@@ -239,6 +244,7 @@ CREATE TABLE `vehicles` (
   `insurance_exp_date` timestamp NULL DEFAULT NULL,
   `driving_licence` varchar(100) DEFAULT NULL,
   `nid` varchar(100) DEFAULT NULL,
+  `vehicles_added_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -247,8 +253,8 @@ CREATE TABLE `vehicles` (
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`id`, `vehicle_no`, `vehicle_type`, `owner_name`, `owner_address`, `owner_contact`, `reg_date`, `seller_address`, `insurance`, `insurance_exp_date`, `driving_licence`, `nid`, `created_at`, `updated_at`) VALUES
-(1, '2322', 'fdsd', 'reereew', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '233232', '2019-07-11 21:17:02', '2019-07-11 21:17:02');
+INSERT INTO `vehicles` (`id`, `vehicle_no`, `vehicle_type`, `owner_name`, `owner_address`, `owner_contact`, `reg_date`, `seller_address`, `insurance`, `insurance_exp_date`, `driving_licence`, `nid`, `vehicles_added_by`, `created_at`, `updated_at`) VALUES
+(1, '2322', 'fdsd', 'reereew', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '233232', NULL, '2019-07-11 21:17:02', '2019-07-11 21:17:02');
 
 --
 -- Indexes for dumped tables
@@ -327,7 +333,7 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -357,7 +363,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vehicles`
